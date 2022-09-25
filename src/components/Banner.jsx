@@ -9,18 +9,20 @@ function Banner(){
   const author = 'someGuy'
   return (
 
-    <div className="w-full flex justify-between bg-orange-500 h-16 mb-2">
-      <div className="bg-blue-300 drop-shadow-lg flex justify-center h-full w-16 rounded-md">
+    <div className="w-full flex justify-between h-16 mb-2">
+
+      <div className="border-2 border-blue-300 bg-blue-400 drop-shadow-lg flex justify-center h-full w-16 rounded-md">
         <img className="w-9/12 drop-shadow-lg" src={logo} alt='logo'/>
       </div>
 
-      <div className="banner w-1/2 drop-shadow-lg bg-blue-300 rounded-md flex justify-center align-text-middle pl-3 pr-3 pt-1 pb-1">
-        <p className="inline-block drop-shadow-lg pt-3 m-0"> {'"'+ someQuote +'" -' + author} </p>
+      <div className="w-1/2 border-2 border-blue-300 drop-shadow-lg bg-blue-400 rounded-md flex justify-center align-text-middle pl-3 pr-3 pt-1 pb-1">
+        <p className="inline-block font-bold drop-shadow-lg pt-3 m-0"> {'"'+ someQuote +'" -' + author} </p>
       </div>
 
       <div className="opacity-0 flex justify-center h-full w-16 rounded-md">
         <img className="w-9/12" src={logo} alt='logo'/>
       </div>
+
     </div>
 
   )
