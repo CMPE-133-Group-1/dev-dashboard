@@ -5,8 +5,8 @@ import logo from '../images/logo.svg';
 
 function Banner(){
   // need a hook to change the quote
-  const someQuote = 'Some quote will go here!'
-  const author = 'someGuy'
+  const someQuote = 'Lorem ipsum!'
+  const author = 'Author Here'
   return (
 
     <div className="w-full flex justify-between h-16 mb-2">
