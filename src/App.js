@@ -2,6 +2,9 @@ import Banner  from './components/Banner.jsx'
 import Timer  from './components/Timer.jsx'
 
 import { PlayIcon } from '@radix-ui/react-icons'
+import SnippetsApp from './components/SnippetsApp';
+import NotesApp from './components/NotesApp';
+import ToDoApp from './components/ToDoApp';
 
 import './App.css';
 
@@ -14,12 +17,17 @@ function App() {
 
 
         <div className="grid grid-cols-3 gap-2 h-4/5">
-          <div className='bg-blue-200'>
-            <PlayIcon/>
+          <div className='bg-blue-200 grid grid-row gap-1'>
+            <NotesApp/>
+            <ToDoApp/>
+            
           </div>
-          <div className='bg-blue-300'> col-2 </div>
+          <div className='bg-blue-300'> 
+           
+          </div>
           <div className=''>
             <Timer/>
+            <SnippetsApp/>
           </div>
         </div>
 
