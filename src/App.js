@@ -7,6 +7,7 @@ import NotesApp from './components/NotesApp';
 import ToDoApp from './components/ToDoApp';
 
 import './App.css';
+import WeatherApp from './components/WeatherApp.jsx';
 
 function App() {
   return (
@@ -18,16 +19,14 @@ function App() {
 
         <div className="grid grid-cols-3 gap-2 h-4/5">
           <div className='bg-blue-200 grid grid-row gap-1'>
-            <NotesApp/>
-            <ToDoApp/>
             
           </div>
           <div className='bg-blue-300'> 
-           
+           <WeatherApp/>
           </div>
           <div className=''>
             <Timer/>
-            <SnippetsApp/>
+            
           </div>
         </div>
 
@@ -40,3 +39,8 @@ export default App;
 
 
 // installed an icon package refer: https://icons.radix-ui.com
+/*
+<NotesApp/>
+            <ToDoApp/>
+            <SnippetsApp/>
+*/
