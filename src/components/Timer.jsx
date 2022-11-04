@@ -4,11 +4,10 @@ import { PlayIcon, ReloadIcon, StopIcon } from '@radix-ui/react-icons'
 
 
 function Timer(){
-  const [min, setMin] = useState(1)
-  const [sec, setSec] = useState(0)
+  const [min, setMin] = useState(0)
+  const [sec, setSec] = useState(5)
   //const [displayMsg, setDisplayMsg] = useState(false)
   const [pause, setPause] = useState(1)
-  
   
     useEffect(()=> {
         if(pause===0){
@@ -21,7 +20,7 @@ function Timer(){
                 }else{
                   //let minutes = displayMsg ? min : 4;
                   //let seconds = 59;
-        
+                  alert("Time for a break!")
                   //setSec(seconds)
                   //setMin(minutes)
                   //setDisplayMsg(!displayMsg)
@@ -58,22 +57,23 @@ function Timer(){
 
       <div className="flex flex-row justify-around w-1/2 ml-auto mr-auto ">
         <button
+            className='shadow-lg bg-green-500 hover:bg-green-600 rounded-md p-1 pl-3 pr-3'
             onClick={() => { 
               setPause(0)
               console.log("Start"+pause);
-               
               }}>
             <PlayIcon/>  
         </button>
         <button
+            className='shadow-lg bg-red-500 hover:bg-red-600 rounded-md p-1 pl-3 pr-3'
             onClick={() => { 
               setPause(1)
               console.log("Stop"+pause); 
-              
               }}>
             <StopIcon/>  
         </button>
         <button
+            className='shadow-lg bg-blue-500 hover:bg-blue-600 rounded-md p-1 pl-3 pr-3'
             onClick={() => { 
               setPause(1)
               setMin(0)
@@ -84,7 +84,6 @@ function Timer(){
             <ReloadIcon/>  
         </button>
       </div>
-
     </div>
   )
 }

@@ -24,8 +24,7 @@ function WeatherApp(){
     }
 
     return(
-        <div className='bg-blue-600 flex flex-col gap-2 p-2 rounded-lg'>
-            <h1> Weather App </h1>
+        <div className='bg-blue-600 flex flex-col gap-2 p-3 rounded-lg'>
             <input 
             type="text" 
             placeholder='Enter City...' 

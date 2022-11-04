@@ -23,7 +23,6 @@ function App() {
           </div>
           <div className=''>
             <Timer/>
-            
           </div>
         </div>
 
