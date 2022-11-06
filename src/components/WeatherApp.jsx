@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-
+import Clock from './Clock'
 
 function WeatherApp(){
     
@@ -8,14 +8,7 @@ function WeatherApp(){
     // used to store what we input
     const [city, setCity] = useState("")
     // creating a date object with time info
-    let now = new Date()
-    // date methods return int values that we can use to index these arrays to provide the day/month in strings
-    let days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
-    let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec']
-    // we store the entire string of info under one easy to use variable name
-    let currentTime = now.getHours() +":"+now.getMinutes()
-    let currentDateInfo = days[now.getDay()]+" "+months[now.getMonth()]+" "+ now.getDate()+", "+ now.getFullYear()
-
+    
 
     
 
@@ -36,8 +29,7 @@ function WeatherApp(){
     return(
         <div className='bg-blue-600 p-4 rounded-lg flex flex-col gap-0 '> 
 
-        <h1 className='text-[124px] font-black h-[140px]'> {currentTime} </h1>
-        <h1 className='text-[24px] p-0 mt-0'> {currentDateInfo} </h1>
+        <Clock/>
 
         <div className=' flex flex-col gap-2 '>
             <input 
