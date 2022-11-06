@@ -5,7 +5,7 @@ import { PlayIcon, ReloadIcon, StopIcon } from '@radix-ui/react-icons'
 
 function Timer(){
   const [min, setMin] = useState(0)
-  const [sec, setSec] = useState(5)
+  const [sec, setSec] = useState(0)
   //const [displayMsg, setDisplayMsg] = useState(false)
   const [pause, setPause] = useState(1)
   

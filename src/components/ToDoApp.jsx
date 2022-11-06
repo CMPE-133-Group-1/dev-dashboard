@@ -2,6 +2,7 @@
 import {useState, useEffect} from 'react';
 import {db} from '../firebase-config'
 import { collection, doc, getDocs, addDoc, deleteDoc } from 'firebase/firestore'
+import { CheckIcon } from '@radix-ui/react-icons';
 
 
 function ToDoApp() {
@@ -21,7 +22,6 @@ function ToDoApp() {
     const getTodos = async () => {
       const data = await getDocs(todosCollectionRef)
       setTodos(data.docs.map((doc) => ({...doc.data(), id: doc.id}) ));
-
     }; 
     // here we call the function to refresh the results 
     getTodos()
@@ -52,13 +52,13 @@ function ToDoApp() {
         <button className='bg-green-300 p-1 rounded-lg' name='create todo' onClick={createTodos}> Submit </button> 
       </div>
        
-        
-      
       {todos.map((task) => {
         return (
         <div className='flex flex-row gap-1 justify-between mb-1'> 
           <h1 className='p-1 bg-slate-500 w-3/4 rounded-lg text-left'> {task.Task} </h1> 
-          <button className='bg-red-300 p-1 rounded-lg' task='delete' onClick={() => {deleteTodos(task.id)}}> done </button>
+          <button className='bg-red-300 p-1 rounded-lg' task='delete' onClick={() => {deleteTodos(task.id)}}> 
+            <CheckIcon/>
+          </button>
         </div>
         )
       })}

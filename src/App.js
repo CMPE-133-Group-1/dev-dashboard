@@ -1,6 +1,5 @@
 import WeatherApp from './components/WeatherApp.jsx';
 import SnippetsApp from './components/SnippetsApp';
-import { PlayIcon } from '@radix-ui/react-icons';
 import Banner  from './components/Banner.jsx';
 import NotesApp from './components/NotesApp';
 import Timer  from './components/Timer.jsx';
@@ -15,13 +14,16 @@ function App() {
         <Banner/>
         <div className="grid grid-cols-3 gap-2 h-4/5">
           <div className='bg-blue-200 grid grid-row gap-1'>
-            <ToDoApp/>
+            <NotesApp/>
+
           </div>
           <div className='bg-blue-300'> 
            <WeatherApp/>
+           <ToDoApp/>
           </div>
           <div className=''>
             <Timer/>
+            <SnippetsApp/>
           </div>
         </div>
 

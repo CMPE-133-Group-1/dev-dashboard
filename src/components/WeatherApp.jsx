@@ -48,9 +48,9 @@ function WeatherApp(){
                     </p>
                 </div>
             ): (
-                <div className='flex flex-col-2 justify-between gap-3 h-[160px]'>
+                <div className='flex flex-col-2 justify-between h-[160px]'>
                     <div>
-                        <img className='rounded-lg m-5 pl-0 ml-0' src="https://picsum.photos/120" alt="img" />
+                        <img className='rounded-lg mt-5 mb-5 mr-0 pl-0 ml-0' src="https://picsum.photos/120" alt="img" />
                     </div>
                     <div>
                         <h1 className='text-blue-200 text-[65px] ml-auto p-0'> {weatherData.name} </h1>
