@@ -13,7 +13,6 @@ function ToDoApp() {
   // Create
   const createTodos = async () => {
     await addDoc(todosCollectionRef, {Task: newTask})
-
   } 
 
   // when the page rendes this will be called
@@ -29,8 +28,6 @@ function ToDoApp() {
     // eslint-disable-next-line
   },[todos])
   // above [means that if a change is detected in tasks it will re-render!!]
-
-  
 
   // 
   // const updateTodos = async (id, task) => {
