@@ -2,9 +2,6 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import logo from '../images/logo.svg';
-import Timer from './Timer';
-
-
 
 function Banner(){
   // need a hook to change the quote
@@ -28,9 +25,9 @@ function Banner(){
     const timer = window.setInterval(() => {
       setActiveIndex(previous => 
         previous + 1 >= quote.length ? 0 : previous + 1
-    )
-
+      )
     }, 1000)
+
     return () => {
       window.clearInterval(timer)
     }
