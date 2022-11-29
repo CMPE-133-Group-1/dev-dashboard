@@ -15,8 +15,10 @@ function Clock(){
         const interval = setInterval(() => {
             // create a new date object with all the hr/min/day/mnth/year data we are going to need
             let now = new Date()
+            // minutes in the time must have a 0 in them if less than 10
+            let timerMin =  now.getMinutes() < 10 ? `0${now.getMinutes()}` : now.getMinutes();
             // we store the entire string of info under one easy to use variable name
-            let currentTime = now.getHours() +":"+now.getMinutes()
+            let currentTime = now.getHours() +":"+  timerMin
             let currentDateInfo = days[now.getDay()]+" "+months[now.getMonth()]+" "+ now.getDate()+", "+ now.getFullYear()
             // set the new values every 1 sec
             setTime(currentTime);
@@ -27,7 +29,7 @@ function Clock(){
     }, [time, cDate])
     
     // need to implement this to ensure time is displayed with 0 before single values
-    //const timerMin = time < 10 ? `0${min}` : min;
+    
 
     return(
         <div className='Clock '>

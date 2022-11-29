@@ -8,7 +8,7 @@ function Timer(){
   const [sec, setSec] = useState(0)
   //const [displayMsg, setDisplayMsg] = useState(false)
   const [pause, setPause] = useState(1)
-  
+
     useEffect(()=> {
         if(pause===0){
         let interval = setInterval( () => {
@@ -51,8 +51,16 @@ function Timer(){
         <button className="shadow-lg bg-blue-500 hover:bg-blue-600 rounded-md p-1 pl-3 pr-3"
         onClick={() => { setMin(60);}}> 60 min </button>
 
-        <button className="shadow-lg bg-blue-500 hover:bg-blue-600 rounded-md p-1 pl-3 pr-3"
-        onClick={() => { console.log("Custom");}}> custom </button>
+        <div className=' shadow-lg bg-blue-500 hover:bg-blue-600 rounded-md p-1 pl-3 pr-3'> 
+          <input 
+          type="number" 
+          id="min" name="min" 
+          min="1"  
+          placeholder='Mins'
+          className=' bg-blue-500 pl-2'
+          onChange={(event) => {setMin(event.target.value)}}
+          />
+        </div>
       </div>
 
       <div className="flex flex-row justify-around w-1/2 ml-auto mr-auto ">
