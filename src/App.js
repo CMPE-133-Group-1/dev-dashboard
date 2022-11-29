@@ -3,7 +3,9 @@ import SnippetsApp from './components/SnippetsApp';
 import Banner  from './components/Banner.jsx';
 import NotesApp from './components/NotesApp';
 import Timer  from './components/Timer.jsx';
+import Links from './components/Links.jsx';
 import ToDoApp from './components/ToDoApp';
+
 
 import './App.css';
 
@@ -14,6 +16,7 @@ function App() {
         <Banner/>
         <div className="grid grid-cols-3 gap-2 h-4/5">
           <div className='bg-blue-200 grid grid-row gap-1'>
+            <Links/>
             <NotesApp/>
 
           </div>
