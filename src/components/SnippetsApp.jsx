@@ -49,7 +49,7 @@ function SnippetsApp() {
   }
 
   return (
-    <div className="App bg-slate-600 rounded-lg w-1/1 flex flex-cols-2 gap-1 overflow-auto p-3">
+    <div className="App bg-SnippetApp rounded-lg w-1/1 flex flex-cols-2 gap-1 overflow-auto p-3">
       
         <div className=' flex flex-col w-1/3 gap-1 rounded-lg p-2 mb-2 bg-red-300'> 
           <input className='bg-grey-200 text-zinc-800 p-1 rounded-lg' placeholder='Title...' type='text' minLength={3} onChange={(event) => {setNewTitle(event.target.value)}}/> 
@@ -79,3 +79,22 @@ function SnippetsApp() {
 
 
 export default SnippetsApp
+
+{/* <div className='overflow-auto'> 
+          <div className=' flex flex-col gap-1 rounded-lg p-2 mb-2 bg-red-300'> 
+            <input className='bg-grey-200 text-zinc-800 p-1 rounded-lg' placeholder='Title...' type='text' minLength={3} onChange={(event) => {setNewTitle(event.target.value)}}/> 
+            <textarea className='bg-grey-200 text-zinc-800 p-1 rounded-lg' placeholder='Body...' type='text' minLength={3} onChange={(event)  => {setNewBody(event.target.value)}}/> 
+            <button className='bg-green-300 rounded-lg w-1/2 mr-auto ml-auto' name='create snippet' onClick={createSnippet}> submit </button>
+          </div>
+
+          <div> 
+          {snippets.map((snippet) => {
+              return (
+              <div className=' mb-1 p-2 rounded-lg bg-slate-500'> 
+                <h1 className='text-left font-bold border-solid '> {snippet.Title} </h1> 
+                <p className='text-left font-light border-2 border-sky-500 rounded-lg p-1 mb-2'> {snippet.Body.slice(0, 8)} </p> 
+              </div>
+              )
+            })}
+          </div>
+        </div> */}

@@ -37,27 +37,27 @@ function Timer(){
   const timerSec = sec < 10 ? `0${sec}` : sec;
 
   return(
-    <div className="bg-blue-400 border-2 border-blue-300 rounded-md pt-4 pb-4 flex flex-col gap-6">
+    <div className="bg-Timer border-2 border-blue-300 rounded-md pt-4 pb-4 flex flex-col gap-6">
 
       <h1 className="text-XXL"> {timerMin+':'+timerSec} </h1>
 
       <div className="flex flex-row justify-around">
-        <button className="shadow-lg bg-blue-500 hover:bg-blue-600 rounded-md p-1 pl-3 pr-3"
+        <button className="shadow-lg bg-TimerButton hover:bg-blue-600 rounded-md p-1 pl-3 pr-3"
         onClick={() => { setMin(15);}}> 15 min </button>
 
-        <button className="shadow-lg bg-blue-500 hover:bg-blue-600 rounded-md p-1 pl-3 pr-3"
+        <button className="shadow-lg bg-TimerButton hover:bg-blue-600 rounded-md p-1 pl-3 pr-3"
         onClick={() => { setMin(30);}}> 30 min </button>
 
-        <button className="shadow-lg bg-blue-500 hover:bg-blue-600 rounded-md p-1 pl-3 pr-3"
+        <button className="shadow-lg bg-TimerButton hover:bg-blue-600 rounded-md p-1 pl-3 pr-3"
         onClick={() => { setMin(60);}}> 60 min </button>
 
-        <div className=' shadow-lg bg-blue-500 hover:bg-blue-600 rounded-md p-1 pl-3 pr-3'> 
+        <div className=' shadow-lg bg-TimerButton hover:bg-blue-600 rounded-md p-1 pl-3 pr-3'> 
           <input 
           type="number" 
           id="min" name="min" 
           min="1"  
           placeholder='Mins'
-          className=' bg-blue-500 pl-2'
+          className=' bg-TimerButton pl-2'
           onChange={(event) => {setMin(event.target.value)}}
           />
         </div>
@@ -81,7 +81,7 @@ function Timer(){
             <StopIcon/>  
         </button>
         <button
-            className='shadow-lg bg-blue-500 hover:bg-blue-600 rounded-md p-1 pl-3 pr-3'
+            className='shadow-lg bg-TimerButton hover:bg-blue-600 rounded-md p-1 pl-3 pr-3'
             onClick={() => { 
               setPause(1)
               setMin(0)
