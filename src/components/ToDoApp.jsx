@@ -7,11 +7,11 @@ import { CheckIcon } from '@radix-ui/react-icons';
 
 function ToDoApp() {
   const [newTask, setNewTask] = useState("")
-
   const [todos, setTodos] = useState([])
+  // refers to the collections in the db called todos
   const todosCollectionRef = collection(db, "todos")
 
-  // Create
+  // Create todo and store on db
   const createTodos = async () => {
     await addDoc(todosCollectionRef, {Task: newTask})
   } 
@@ -29,7 +29,7 @@ function ToDoApp() {
   },[todos])
   // above [means that if a change is detected in tasks it will re-render!!]
 
-  // 
+  // update todos from the db
   // const updateTodos = async (id, task) => {
   //   // const taskDoc = doc(db, "tasks", id)
   //   // const newTask = {task: task }
@@ -39,6 +39,7 @@ function ToDoApp() {
   //   console.log(id +" : "+ task)
   // }
 
+  // delete to dos from the db
   const deleteTodos = async (id) => {
     const noteDoc = doc(db, "todos", id)
     await deleteDoc(noteDoc)

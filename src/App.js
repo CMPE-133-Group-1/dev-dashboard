@@ -1,5 +1,6 @@
 import WeatherApp from './components/WeatherApp.jsx';
 import SnippetsApp from './components/SnippetsApp';
+import Calendar from './components/Calendar.jsx';
 import Banner  from './components/Banner.jsx';
 import NotesApp from './components/NotesApp';
 import Timer  from './components/Timer.jsx';
@@ -19,10 +20,14 @@ function App() {
             <Links/>
 
           </div>
-          <div className='bg-blue-300'> 
-           
-           
+          
+          <div className='flex flex-col'> 
+           <Calendar/>
+           <div className='h-2/4'> 
+            hello
+           </div>
           </div>
+
           <div className=''>
             <Timer/>
             
