@@ -1,20 +1,8 @@
 import React, {useState} from 'react'
+import { Crosshair2Icon } from '@radix-ui/react-icons'
 import Clock from './Clock'
 
-function getLocationData(API_KEY){
-    // https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
-    console.log('locating...')
-    navigator.geolocation.getCurrentPosition(function(position) {
-        console.log("Latitude is :", position.coords.latitude);
-        console.log("Longitude is :", position.coords.longitude);
 
-        let locationLat = position.coords.latitude
-        let locationLon = position.coords.longitude
-        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${locationLat}&lon=${locationLon}&exclude=hourly,minutely&appid=${API_KEY}`).then(res => res.json().then(data => {
-            console.log(data)
-        }))
-    });
-}
 
 function WeatherApp(){
     const WeatherAPI = 'ba8291294488364e8754a031b9e8b25f'
@@ -24,11 +12,12 @@ function WeatherApp(){
     const [city, setCity] = useState("")
     // creating a date object with time info
     let IconUrl = 'http://openweathermap.org/img/wn/'+ {} +'@2x.png'
+    // save the city that is found using the geolocation functionality 
+    const [geoCity, setGeoCity] = useState("")
 
     //getLocationData(WeatherAPI)
-
     const getWeather = (event) => {
-        // for custom city
+        // on "enter" key press take what the user inputted and find the data for that input
         if (event.key === "Enter") {
             fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${WeatherAPI}`).then(
                 response => response.json()
@@ -38,11 +27,37 @@ function WeatherApp(){
                     setCity("")
                 }
             )
-            console.log('>>: New City Entered')
         }
     }
 
-    
+    const getGeoLocationWeather = () => {
+        console.log('>> : locating...')
+        // find the users geolocation 
+        navigator.geolocation.getCurrentPosition(function(position) {
+            let locationLat = position.coords.latitude
+            let locationLon = position.coords.longitude
+            // fetch the data for the lon and lat of the users position and set the geoCity to that value
+            fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${locationLat}&lon=${locationLon}&limit=${1}&appid=${WeatherAPI}`).then(res => res.json().then(data => {
+                console.log(" getGeoLocationWeather >> : " + data[0].name)
+                setGeoCity(data[0].name)
+            }))
+        });
+
+        autoDetect()
+    }
+
+    // take the geoCity and fetch the data and set the respective values to display the weather data for that city
+    const autoDetect = () => {
+        console.log("autoDetect >> : " + geoCity)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${geoCity}&units=imperial&APPID=${WeatherAPI}`).then(
+                response => response.json()
+            ).then(
+                data => {
+                    setWeatherData(data)
+                    setCity("")
+                }
+            )
+    }
 
     return(
         <div className='bg-blue-600 p-4 rounded-lg flex flex-col gap-0 '> 
@@ -50,15 +65,27 @@ function WeatherApp(){
         <Clock/>
 
         <div className=' flex flex-col gap-2 '>
-            <input 
-            type="text" 
-            placeholder='Enter City...' 
-            className='rounded-lg p-1 text-white bg-blue-500'
-            onChange={inputed => setCity(inputed.target.value)}
-            value={city}
-            onKeyPress={getWeather}
-            />
 
+            <div> 
+                <input 
+                type="text" 
+                placeholder='Enter City...' 
+                className='rounded-lg p-1 text-white bg-blue-500'
+                onChange={inputed => setCity(inputed.target.value)}
+                value={city}
+                onKeyPress={getWeather}
+                />
+
+                <button 
+                className='bg-slate-700 rounded-xl p-1 mt-auto mb-auto'
+                onClick={()=>{
+                    getGeoLocationWeather()
+                }}
+                > 
+                    <Crosshair2Icon/> 
+                </button>
+            </div>
+            
             {typeof weatherData.main === 'undefined' ? (
                 <div>
                     <p className='text-blue-200 text-[34px]' > 
@@ -98,4 +125,4 @@ function WeatherApp(){
 }
 
 
-export default WeatherApp
+export default WeatherApp 

@@ -9,6 +9,7 @@ function SnippetsApp() {
   const [newTitle, setNewTitle] = useState("")
   const [snippets, setNotes] = useState([])
   const notesCollectionRef = collection(db, "snippets")
+  const [focusNote, setFocusNote]= useState(snippets[1])
 
   // Create an entry, passing in the reference tot the collection and also the parameters 
   const createSnippet = async () => {
@@ -49,15 +50,29 @@ function SnippetsApp() {
   }
 
   return (
-    <div className="App bg-SnippetApp rounded-lg w-1/1 flex flex-cols-2 gap-1 overflow-auto p-3">
-      
-        <div className=' flex flex-col w-1/3 gap-1 rounded-lg p-2 mb-2 bg-red-300'> 
-          <input className='bg-grey-200 text-zinc-800 p-1 rounded-lg' placeholder='Title...' type='text' minLength={3} onChange={(event) => {setNewTitle(event.target.value)}}/> 
-          <textarea className='bg-grey-200 text-zinc-800 p-1 rounded-lg' placeholder='Body...' type='text' minLength={3} onChange={(event)  => {setNewBody(event.target.value)}}/> 
-          <button className='bg-green-300 rounded-lg w-1/2 mr-auto ml-auto' name='create snippet' onClick={createSnippet}> submit </button>
+    <div className="App bg-SnippetApp rounded-lg w-1/1 h-2/4 flex flex-cols-2 gap-1 overflow-auto p-3">
+
+        <div className='bg-green-500 overflow-scroll'> 
+          <div className=' flex flex-col w-1/1 gap-1 rounded-lg p-2 mb-2 bg-red-300'> 
+            <input className='bg-grey-200 text-zinc-800 p-1 rounded-lg' placeholder='Title...' type='text' minLength={3} onChange={(event) => {setNewTitle(event.target.value)}}/> 
+            <textarea className='bg-grey-200 text-zinc-800 p-1 rounded-lg' placeholder='Body...' type='text' minLength={3} onChange={(event)  => {setNewBody(event.target.value)}}/> 
+            <button className='bg-green-300 rounded-lg w-1/2 mr-auto ml-auto' name='create snippet' onClick={createSnippet}> submit </button>
+          </div>
+
+          <div className='bg-purple-300 w-1/1 overflow-scroll'> 
+            {snippets.map((snippet) => {
+              return (
+              <div className=' mb-1 p-2 rounded-lg bg-slate-500 '> 
+                <h1 className='text-left font-bold border-solid '> {snippet.Title} </h1> 
+                <p className='text-left font-light border-2 border-sky-500 rounded-lg p-1 mb-2'> {snippet.Body.slice(0, 12)} </p> 
+              </div>
+              )
+            })}
+          </div>
         </div>
         
-        <div className='bg-purple-300 w-2/3'> 
+        
+        <div className='bg-purple-300 w-2/3 overflow-scroll'> 
           {snippets.map((snippet) => {
             return (
             <div className=' mb-1 p-2 rounded-lg bg-slate-500'> 
@@ -73,6 +88,8 @@ function SnippetsApp() {
             )
           })}
         </div>
+
+
     </div>
   );
 }
@@ -80,21 +97,20 @@ function SnippetsApp() {
 
 export default SnippetsApp
 
-{/* <div className='overflow-auto'> 
-          <div className=' flex flex-col gap-1 rounded-lg p-2 mb-2 bg-red-300'> 
-            <input className='bg-grey-200 text-zinc-800 p-1 rounded-lg' placeholder='Title...' type='text' minLength={3} onChange={(event) => {setNewTitle(event.target.value)}}/> 
-            <textarea className='bg-grey-200 text-zinc-800 p-1 rounded-lg' placeholder='Body...' type='text' minLength={3} onChange={(event)  => {setNewBody(event.target.value)}}/> 
-            <button className='bg-green-300 rounded-lg w-1/2 mr-auto ml-auto' name='create snippet' onClick={createSnippet}> submit </button>
-          </div>
+/*
+{snippets.map((snippet) => {
+            return (
+            <div className=' mb-1 p-2 rounded-lg bg-slate-500'> 
+              <h1 className='text-left font-bold border-solid '> {snippet.Title} </h1> 
+              <p className='text-left font-light border-2 border-sky-500 rounded-lg p-1 mb-2'> {snippet.Body} </p> 
 
-          <div> 
-          {snippets.map((snippet) => {
-              return (
-              <div className=' mb-1 p-2 rounded-lg bg-slate-500'> 
-                <h1 className='text-left font-bold border-solid '> {snippet.Title} </h1> 
-                <p className='text-left font-light border-2 border-sky-500 rounded-lg p-1 mb-2'> {snippet.Body.slice(0, 8)} </p> 
+              <div className='flex  flex-row justify-center gap-2 rounded-lg'> 
+              <button className='bg-blue-300 p-1 rounded-lg' title='edit' onClick={() => {updateSnippet(snippet.id, snippet.Title, snippet.Body)}}> Edit </button>
+              <button className='bg-red-300 p-1 rounded-lg' title='delete' onClick={() => {deleteSnippet(snippet.id)}}> Delete </button>
               </div>
-              )
-            })}
-          </div>
-        </div> */}
+              
+            </div>
+            )
+          })}
+
+*/
