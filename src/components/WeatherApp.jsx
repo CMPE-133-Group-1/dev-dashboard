@@ -14,6 +14,10 @@ function WeatherApp(){
     let IconUrl = 'http://openweathermap.org/img/wn/'+ {} +'@2x.png'
     // save the city that is found using the geolocation functionality 
     const [geoCity, setGeoCity] = useState("")
+    // stores the code for the weather icon
+    const [iconCode,setIconCode] = useState("")
+    // stores the link to the weathe icon image that will be used to source the image
+    const [iconLink, setIconLink] = useState("")
 
     //getLocationData(WeatherAPI)
     const getWeather = (event) => {
@@ -25,13 +29,15 @@ function WeatherApp(){
                 data => {
                     setWeatherData(data)
                     setCity("")
+                    setIconCode(weatherData.weather[0].icon)
+                    setIconLink("http://openweathermap.org/img/wn/"+iconCode+"@2x.png")
                 }
             )
         }
     }
 
+    // Get the Lon and Lat of the user presntly and provide a city Name
     const getGeoLocationWeather = () => {
-        console.log('>> : locating...')
         // find the users geolocation 
         navigator.geolocation.getCurrentPosition(function(position) {
             let locationLat = position.coords.latitude
@@ -42,7 +48,6 @@ function WeatherApp(){
                 setGeoCity(data[0].name)
             }))
         });
-
         autoDetect()
     }
 
@@ -55,6 +60,8 @@ function WeatherApp(){
                 data => {
                     setWeatherData(data)
                     setCity("")
+                    setIconCode(weatherData.weather[0].icon)
+                    setIconLink("http://openweathermap.org/img/wn/"+iconCode+"@2x.png")
                 }
             )
     }
@@ -62,64 +69,64 @@ function WeatherApp(){
     return(
         <div className='bg-blue-600 p-4 rounded-lg flex flex-col gap-0 '> 
 
-        <Clock/>
+            <Clock/>
 
-        <div className=' flex flex-col gap-2 '>
+            <div className=' flex flex-col gap-2 '>
 
-            <div> 
-                <input 
-                type="text" 
-                placeholder='Enter City...' 
-                className='rounded-lg p-1 text-white bg-blue-500'
-                onChange={inputed => setCity(inputed.target.value)}
-                value={city}
-                onKeyPress={getWeather}
-                />
+                <div> 
+                    <input 
+                    type="text" 
+                    placeholder='Enter City...' 
+                    className='rounded-lg p-1 text-white bg-blue-500'
+                    onChange={inputed => setCity(inputed.target.value)}
+                    value={city}
+                    onKeyPress={getWeather}
+                    />
 
-                <button 
-                className='bg-slate-700 rounded-xl p-1 mt-auto mb-auto'
-                onClick={()=>{
-                    getGeoLocationWeather()
-                }}
-                > 
-                    <Crosshair2Icon/> 
-                </button>
-            </div>
-            
-            {typeof weatherData.main === 'undefined' ? (
-                <div>
-                    <p className='text-blue-200 text-[34px]' > 
-                    Where are we today?
-                    </p>
+                    <button 
+                    className='bg-slate-700 rounded-xl p-1 mt-auto mb-auto'
+                    onClick={()=>{
+                        getGeoLocationWeather()
+                    }}
+                    > 
+                        <Crosshair2Icon/> 
+                    </button>
                 </div>
-            ): (
-                <div className='flex flex-col-2 justify-between h-[160px]'>
+                
+                {typeof weatherData.main === 'undefined' ? (
                     <div>
-                        <img className='rounded-lg mt-5 mb-5 mr-0 pl-0 ml-0' src='http://openweathermap.org/img/wn/10d@2x.png' alt="img" />
+                        <p className='text-blue-200 text-[34px]' > 
+                            Where are we today?
+                        </p>
                     </div>
-                    <div>
-                        <h1 className='text-blue-200 text-[65px] ml-auto p-0'> {weatherData.name} </h1>
+                ): (
+                    <div className='flex flex-col-2 justify-between h-[160px]'>
+                        <div>
+                            <img className='rounded-lg mt-5 mb-5 mr-0 pl-0 ml-0' src={iconLink} alt="img" />
+                        </div>
+                        <div>
+                            <h1 className='text-blue-200 text-[65px] ml-auto p-0'> {weatherData.name} </h1>
 
-                        <div className='flex flex-col gap-0 text-left p-0'>
-                            <h2 className='text-blue-200 text-[18px] font-semibold'> {Math.round(weatherData.main.temp)} °F </h2>
-                            <h2 className='text-blue-200 text-[14px] font-semibold'> {weatherData.weather[0].main} </h2>
+                            <div className='flex flex-col gap-0 text-left p-0'>
+                                <h2 className='text-blue-200 text-[18px] font-semibold'> {Math.round(weatherData.main.temp)} °F </h2>
+                                <h2 className='text-blue-200 text-[14px] font-semibold'> {weatherData.weather[0].main} </h2>
+                            </div>
                         </div>
                     </div>
+                )
+            }
+                
+
+            {weatherData.cod === "404" ? (
+                <p className='text-red-400 font-bold'> 
+                    City not found!! Please try again... :( 
+                </p>
+            ):(
+                <div> 
                 </div>
             )
-        }
-            
-
-        {weatherData.cod === "404" ? (
-            <p className='text-red-400 font-bold'> 
-                City not found!! Please try again... :( 
-            </p>
-        ):(
-            <div> 
+            }
             </div>
-        )
-        }
-        </div>
     </div>
     )
 }

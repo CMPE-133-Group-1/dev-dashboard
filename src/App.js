@@ -21,6 +21,7 @@ function App() {
           </div>
           <div className='bg-blue-300'> 
            <WeatherApp/>
+           
           </div>
           <div className=''>
             <Timer/>

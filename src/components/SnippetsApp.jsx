@@ -5,19 +5,23 @@ import { collection, doc, getDocs, addDoc, deleteDoc } from 'firebase/firestore'
 
 
 function SnippetsApp() {
+  // stores the body of a snippet
   const [newBody, setNewBody] = useState("")
+  // stores the title of a snippet
   const [newTitle, setNewTitle] = useState("")
+  // stores the snippets in an array to be mapped out 
   const [snippets, setNotes] = useState([])
+  // refers to the collection in teh database known as snippets, where we will store our info
   const notesCollectionRef = collection(db, "snippets")
-  const [focusNote, setFocusNote]= useState(snippets[1])
+  // stores the selected snippets information [Title, Body] 
+  const [focusNote, setFocusNote]= useState([])
 
   // Create an entry, passing in the reference tot the collection and also the parameters 
   const createSnippet = async () => {
     await addDoc(notesCollectionRef, {Title: newTitle, Body: newBody})
-
   } 
 
-  // when the page rendes this will be called
+  // when the page renders this will be called
   useEffect(()=>{
     // we need an async, api q returns a promise. we store the data we aim to update
     const getSnippets = async () => {
@@ -31,9 +35,7 @@ function SnippetsApp() {
   },[snippets])
   // above [means that if a change is detected in snippets it will re-render!!]
 
-  
-
-  // 
+  // update a given snippet
   const updateSnippet = async (id, title, body) => {
     // const noteDoc = doc(db, "snippets", id)
     // const newTitle = {title: title }
@@ -62,9 +64,11 @@ function SnippetsApp() {
           <div className='bg-purple-300 w-1/1 overflow-scroll'> 
             {snippets.map((snippet) => {
               return (
-              <div className=' mb-1 p-2 rounded-lg bg-slate-500 '> 
+              <div 
+              className=' mb-1 p-2 rounded-lg bg-slate-500 '  
+              onClick={() => ( setFocusNote([snippet.Title, snippet.Body]) )}> 
                 <h1 className='text-left font-bold border-solid '> {snippet.Title} </h1> 
-                <p className='text-left font-light border-2 border-sky-500 rounded-lg p-1 mb-2'> {snippet.Body.slice(0, 12)} </p> 
+                <p className='text-left font-light border-2 border-sky-500 rounded-lg p-1 mb-2'> {snippet.Body.slice(0, 20) + "..."} </p> 
               </div>
               )
             })}
@@ -72,7 +76,24 @@ function SnippetsApp() {
         </div>
         
         
-        <div className='bg-purple-300 w-2/3 overflow-scroll'> 
+        <div className='Previewer w-2/3 overflow-scroll p-0'> 
+          <div className='bg-green-400 min-h-full rounded-xl p-4 text-left'> 
+            <h1 className='font-black bg-green-700 pl-2 rounded-xl mb-2'>{focusNote[0]}</h1>
+            <p className=' bg-green-400 pl-2'> {focusNote[1]}</p>
+          </div>
+        </div>
+
+
+    </div>
+  );
+}
+
+
+export default SnippetsApp
+
+/*
+// this is the right side of the snippets module, had list of snippets 
+ <div className='Previewer bg-purple-300 w-2/3 overflow-scroll'> 
           {snippets.map((snippet) => {
             return (
             <div className=' mb-1 p-2 rounded-lg bg-slate-500'> 
@@ -88,29 +109,4 @@ function SnippetsApp() {
             )
           })}
         </div>
-
-
-    </div>
-  );
-}
-
-
-export default SnippetsApp
-
-/*
-{snippets.map((snippet) => {
-            return (
-            <div className=' mb-1 p-2 rounded-lg bg-slate-500'> 
-              <h1 className='text-left font-bold border-solid '> {snippet.Title} </h1> 
-              <p className='text-left font-light border-2 border-sky-500 rounded-lg p-1 mb-2'> {snippet.Body} </p> 
-
-              <div className='flex  flex-row justify-center gap-2 rounded-lg'> 
-              <button className='bg-blue-300 p-1 rounded-lg' title='edit' onClick={() => {updateSnippet(snippet.id, snippet.Title, snippet.Body)}}> Edit </button>
-              <button className='bg-red-300 p-1 rounded-lg' title='delete' onClick={() => {deleteSnippet(snippet.id)}}> Delete </button>
-              </div>
-              
-            </div>
-            )
-          })}
-
 */
