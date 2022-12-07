@@ -30,7 +30,7 @@ function Banner(){
         previous + 1 >= quote.length ? 0 : previous + 1
     )
 
-    }, 1000)
+    }, 5000)
     return () => {
       window.clearInterval(timer)
     }
@@ -42,11 +42,11 @@ function Banner(){
 
     <div className="w-full flex justify-between h-16 mb-2">
 
-      <div className="border-2 border-white-100 bg-gray-200 drop-shadow-lg flex justify-center h-full w-16 rounded-md">
+      <div className="border-2 border-white-100 bg-from-[#9DAB86] drop-shadow-lg flex justify-center h-full w-16 rounded-md">
         <img className="w-9/12 drop-shadow-lg" src={logo} alt='logo'/>
       </div>
     
-      <div className="w-1/2 border-2 border-gray-100 drop-shadow-lg bg-gray-200 rounded-md flex justify-center align-text-middle pl-3 pr-3 pt-1 pb-1">
+      <div className="w-1/2 border-2 border-from-[#9DAB86] drop-shadow-lg bg-from-[#9DAB86] rounded-md flex justify-center align-text-middle pl-3 pr-3 pt-1 pb-1">
         <p className="inline-block font-bold drop-shadow-lg pt-3 m-0"> {'"'+ activeQuote.name +'" - ' + activeQuote.author} </p>
       </div>
 
