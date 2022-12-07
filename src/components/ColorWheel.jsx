@@ -2,34 +2,9 @@ import React from 'react';
 import { SketchPicker, ChromePicker} from 'react-color';
 import { useState, useEffect } from 'react';
 import { useRef } from 'react';
-// import { click } from '@testing-library/user-event/dist/click';
+import {db} from '../firebase-config'
+import { collection, doc, getDocs, addDoc, deleteDoc } from 'firebase/firestore'
 
-//
-class Queue extends Array {
-    enqueue(val) {
-        this.push(val);
-    }
-
-    dequeue() {
-        return this.shift();
-    }
-
-    peek() {
-        return this[0];
-    }
-
-    isEmpty() {
-        return this.length === 0;
-    }
-}
-//
-// let paletteQueue = new Queue()
-/*
- ["#333333", "#FF9F00", "#FFE900", "#B7FF00", 
-         "#00FF59", "#00FFBF", "#00E5FF", "#0077FF", 
-         "#3300FF", "#A600FF", "#FF00E1", "#FF0062",
-         "#000000", "#9B9B9B", "#FFFFFF", "#F22330"]
-*/
 function ColorWheel() {
     let clicked = 0
     const buttonRef = useRef(null)
@@ -37,31 +12,31 @@ function ColorWheel() {
     const [palette] = useState({
         preset: (["#FF001E", "#FF9F00", "#FFE900", "#B7FF00", "#00FF59", "#00E5FF", "#3300FF", "#A600FF", "#FF00E1", "#000000", "#9B9B9B", "#FFFFFF"]),
     })
-
-    // const [isFull, setIsFull] = useState(false)
+    const [palettes, setPalettes] = useState([])
+    const palettesCollectionRef = collection(db, "palettes")
+    const [newPalette, setNewPalette] = useState([]);
    
     const updatePaletteColor = (color) => {
-        clicked = clicked + 1
-        // paletteQueue.enqueue(color)
-        // setPalette(paletteQueue)
-        if(!palette.preset.includes(color.hex) && clicked === 1) {
+        // clicked = clicked + 1
+        if(!palette.preset.includes(color.hex)) {
             const colors = palette.preset.slice(0)
             colors.unshift(color)
             colors.pop()
             palette.preset = colors
+            console.log(palette.preset)
         }
-        if(buttonRef.current.disabled) {
-            handleReset()
-            // clicked = 0
-        }
-    }
+        // if(buttonRef.current.disabled) {
+        //     handleReset()
+        //     // clicked = 0
+        // }
+    }  
 
     const handleClick = event => {
-        buttonRef.current.disabled = true
+        // buttonRef.current.disabled = true
         // buttonRef.display = false
         updatePaletteColor(color)
         console.log('button clicked')
-      };
+    };
 
     const handleReset = event => {
         buttonRef.current.disabled = false
@@ -74,10 +49,23 @@ function ColorWheel() {
     //     }
     // }
 
+    const createPalettes = async () => {
+        await addDoc(palettesCollectionRef, {paletteArray: newPalette})
+    } 
+
+    const deletePalettes = async (id) => {
+        const noteDoc = doc(db, "palettes", id)
+        await deleteDoc(noteDoc)
+    }
+
     useEffect(()=>{
-        console.log(">> Color: " + color)
-        console.log(">> List: " + palette)
-      },[color, palette])
+        const getPalettes = async () => {
+            const data = await getDocs(palettesCollectionRef)
+            setPalettes(data.docs.map((doc) => ({...doc.data(), id: doc.id}) ));
+        }; 
+        // here we call the function to refresh the results 
+        getPalettes()
+    },[color, palette])
 
 
     return (
@@ -116,7 +104,7 @@ function ColorWheel() {
                     className='bg-green-400 p-2 rounded-xl'
                     onClick={() => {
                         handleClick()
-                    }}>Confirm</button>
+                    }}>Add Color To Palette</button>
 
                     {/* <button 
                     className='bg-orange-400 p-2 rounded-xl'
