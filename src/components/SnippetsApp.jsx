@@ -33,17 +33,7 @@ function SnippetsApp() {
     getSnippets()
     // eslint-disable-next-line
   },[snippets])
-  // above [means that if a change is detected in snippets it will re-render!!]
-
-  // update a given snippet
-  const updateSnippet = async (id, title, body) => {
-    // const noteDoc = doc(db, "snippets", id)
-    // const newTitle = {title: title }
-    // const newBody = {body: body }
-    // await updateDoc(noteDoc,newTitle)
-    // await updateDoc(noteDoc,newBody)
-    console.log(id +" : "+ title + " : " + body)
-  }
+  
 
   // Deleting a snippet, we need to know which snippet, pass in the id, store the value we aim to delete, then delete it
   const deleteSnippet = async (id) => {
@@ -90,23 +80,3 @@ function SnippetsApp() {
 
 
 export default SnippetsApp
-
-/*
-// this is the right side of the snippets module, had list of snippets 
- <div className='Previewer bg-purple-300 w-2/3 overflow-scroll'> 
-          {snippets.map((snippet) => {
-            return (
-            <div className=' mb-1 p-2 rounded-lg bg-slate-500'> 
-              <h1 className='text-left font-bold border-solid '> {snippet.Title} </h1> 
-              <p className='text-left font-light border-2 border-sky-500 rounded-lg p-1 mb-2'> {snippet.Body} </p> 
-
-              <div className='flex  flex-row justify-center gap-2 rounded-lg'> 
-              <button className='bg-blue-300 p-1 rounded-lg' title='edit' onClick={() => {updateSnippet(snippet.id, snippet.Title, snippet.Body)}}> Edit </button>
-              <button className='bg-red-300 p-1 rounded-lg' title='delete' onClick={() => {deleteSnippet(snippet.id)}}> Delete </button>
-              </div>
-              
-            </div>
-            )
-          })}
-        </div>
-*/

@@ -6,12 +6,13 @@ import { CheckIcon } from '@radix-ui/react-icons';
 
 
 function ToDoApp() {
+  // task property and list of to-dos
   const [newTask, setNewTask] = useState("")
-
   const [todos, setTodos] = useState([])
+  // referes tot eh collection that stores our task objects
   const todosCollectionRef = collection(db, "todos")
 
-  // Create
+  // Create a to-do object and add it to the firebase DB
   const createTodos = async () => {
     await addDoc(todosCollectionRef, {Task: newTask})
   } 
@@ -29,16 +30,7 @@ function ToDoApp() {
   },[todos])
   // above [means that if a change is detected in tasks it will re-render!!]
 
-  // 
-  // const updateTodos = async (id, task) => {
-  //   // const taskDoc = doc(db, "tasks", id)
-  //   // const newTask = {task: task }
-  //   // const newBody = {body: body }
-  //   // await updateDoc(taskDoc,newTask)
-  //   // await updateDoc(taskDoc,newBody)
-  //   console.log(id +" : "+ task)
-  // }
-
+  // delete to-do object from firebase DB and wait for confirmation (await)
   const deleteTodos = async (id) => {
     const noteDoc = doc(db, "todos", id)
     await deleteDoc(noteDoc)
@@ -69,5 +61,3 @@ function ToDoApp() {
 
 
 export default ToDoApp
-
-//<button task='edit' onClick={() => {updateTodos(task.id, task.Task, task.Body)}}/>

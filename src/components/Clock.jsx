@@ -13,24 +13,24 @@ function Clock(){
     // this will run code every second and refresh the info for the time and date 
     useEffect(() => {
         const interval = setInterval(() => {
-            // create a new date object with all the hr/min/day/mnth/year data we are going to need
+            // create a new date object with all the hr/min/day/mnth/year data
             let now = new Date()
-            // minutes in the time must have a 0 in them if less than 10
+            // minutes in the time must have a 0 in them if less than 10, this will achieve that
             let timerMin =  now.getMinutes() < 10 ? `0${now.getMinutes()}` : now.getMinutes();
-            // we store the entire string of info under one easy to use variable name
+            // Store the entire string of info under one easy to use variable name
             let currentTime = now.getHours() +":"+  timerMin
             let currentDateInfo = days[now.getDay()]+" "+months[now.getMonth()]+" "+ now.getDate()+", "+ now.getFullYear()
-            // set the new values every 1 sec
+            // Set the new values for time and cDate
             setTime(currentTime);
             setCDate(currentDateInfo);
-            // run this code every second
+            // Run this code every second
           }, 1000);
           return () => clearInterval(interval);
+          // Below [time, cDate] means if any change in these values is detected the view will re-render.
     }, [time, cDate])
     
-    // need to implement this to ensure time is displayed with 0 before single values
     
-
+    
     return(
         <div className='Clock '>
             <h1 className='text-[124px] font-black h-[140px]'> {time} </h1>

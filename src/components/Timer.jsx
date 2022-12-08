@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { PlayIcon, ReloadIcon, StopIcon } from '@radix-ui/react-icons'
 
-
-
 function Timer(){
   const [min, setMin] = useState(0)
   const [sec, setSec] = useState(0)
@@ -14,25 +12,21 @@ function Timer(){
         let interval = setInterval( () => {
             clearInterval(interval)
               if(sec === 0){
-                if(min !== 0){
+                if(min !== 0){ // dealing will loop from 59:0 to 59 agian
                   setSec(59)
                   setMin(min-1)
-                }else{
-                  //let minutes = displayMsg ? min : 4;
-                  //let seconds = 59;
+                }else{ // alert once interval has reached end
                   alert("Time for a break!")
-                  //setSec(seconds)
-                  //setMin(minutes)
-                  //setDisplayMsg(!displayMsg)
                 }
-              } else {
+              } else { // decrement if not at 0 
                 setSec(sec-1)
               }
+              // repeat every second
         },1000)
       }
     }, [sec,pause])
   
-  
+    // formatting to ensure minute or hour have a zero before the min if less thatn 10
   const timerMin = min < 10 ? `0${min}` : min;
   const timerSec = sec < 10 ? `0${sec}` : sec;
 
@@ -96,15 +90,4 @@ function Timer(){
   )
 }
 
-
-
 export default Timer;
-
-
-
-/*
-<button className="shadow-lg bg-green-500 hover:bg-green-600 rounded-full p-1 pl-3 pr-3" onClick={startTimer()}/>
-        <button className="shadow-lg bg-red-500 hover:bg-red-600 rounded-full p-1 pl-3 pr-3">
-          <StopIcon/>
-        </button>
-*/
