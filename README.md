@@ -29,6 +29,32 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### ERROR FIXES 
+
+## Error: Referring to firebase being un-resolvable
+
+Run the command of `npm i firebase`
+
+This will install the firebase dependancies required for the project to run.
+
+## Error: Referring to Calendar/Mobiscroll CSS
+
+1. Install the Mobiscroll CLI from npm (you might need sudo access).
+You will be able to configure Mobiscroll with ease in your app with the CLI
+
+Run the command of `npm install -g @mobiscroll/cli`
+
+2. Install Mobiscroll in your React project
+Run the following command in the root folder of your React project.
+
+Run the command of `mobiscroll config react`
+
+*note: you may be asked to You will be prompted to log in with your mobiscroll account. (its free)*
+
+###  -------------------------------------------------------------------------------------------------------|
+###  STOP HERE : Below refers to more technical operations that may not be needed for demo-ing this project |
+###  -------------------------------------------------------------------------------------------------------|
+
 ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
