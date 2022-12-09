@@ -22,7 +22,6 @@ function ToDoApp() {
     const getTodos = async () => {
       const data = await getDocs(todosCollectionRef)
       setTodos(data.docs.map((doc) => ({...doc.data(), id: doc.id}) ));
-
     }; 
     // here we call the function to refresh the results 
     getTodos()
