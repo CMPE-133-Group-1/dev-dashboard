@@ -31,6 +31,12 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### ERROR FIXES 
 
+## Error: Cant resolve "some_dependancy_name_here" (Often first to try out) if this doenst fix it try the following fixes.
+
+Run the command of `npm init -y`
+
+This will reinstall all the dependancies required for the project
+
 ## Error: Referring to firebase being un-resolvable
 
 Run the command of `npm i firebase`
@@ -50,6 +56,13 @@ Run the following command in the root folder of your React project.
 Run the command of `mobiscroll config react`
 
 *note: you may be asked to You will be prompted to log in with your mobiscroll account. (its free)*
+
+## Error: Referring to Radix-Icons
+
+Run the command of `npm install @radix-ui/react-icons`
+
+This will install the Radix icon dependancies required for the project to run.
+
 
 ###  -------------------------------------------------------------------------------------------------------|
 ###  STOP HERE : Below refers to more technical operations that may not be needed for demo-ing this project |
