@@ -54,11 +54,11 @@ function SnippetsApp() {
   return (
     <div className="App rounded-lg w-1/1 h-2/4 flex flex-cols-2 gap-1 overflow-auto p-3" style={{background: "#A7B29E", border: '1px solid #74634F'}}>
 
-        <div className='bg-green-500 overflow-scroll'> 
-          <div className=' flex flex-col w-1/1 gap-1 rounded-lg p-2 mb-2 bg-red-300'> 
+        <div className='overflow-scroll'style={{background: "#C1C8BA"}}> 
+          <div className=' flex flex-col w-1/1 gap-1 rounded-lg p-2 mb-2'style={{background: "#C1C8BA"}}> 
             <input className='bg-grey-200 text-zinc-800 p-1 rounded-lg' placeholder='Title...' type='text' minLength={3} onChange={(event) => {setNewTitle(event.target.value)}}/> 
             <textarea className='bg-grey-200 text-zinc-800 p-1 rounded-lg' placeholder='Body...' type='text' minLength={3} onChange={(event)  => {setNewBody(event.target.value)}}/> 
-            <button className='bg-green-300 rounded-lg w-1/2 mr-auto ml-auto' name='create snippet' onClick={createSnippet}> submit </button>
+            <button className='rounded-lg w-1/2 mr-auto ml-auto' name='create snippet' onClick={createSnippet} style={{background: "#A7BF93"}}> submit </button>
           </div>
 
           <div className='bg-purple-300 w-1/1 overflow-scroll'> 
