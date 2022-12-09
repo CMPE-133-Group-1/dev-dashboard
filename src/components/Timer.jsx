@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { PlayIcon, ReloadIcon, StopIcon } from '@radix-ui/react-icons'
-import { CircularProgressbar } from 'react-circular-progressbar';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 
@@ -47,38 +47,59 @@ function Timer(){
   const timerSec = sec < 10 ? `0${sec}` : sec;
 
   return(
-    <div className="bg-Timer border-2 border-from-[#74634F] rounded-md pt-4 pb-4 flex flex-col gap-6">
+    <div className="rounded-md pt-4 pb-4 flex flex-col gap-6" style={{background: "#D2CADD", border: '1px solid #74634F'}}>
       <div style={{ width: "30%", margin: "auto"}}>
         <CircularProgressbar 
           value={getTotalTime(min, sec, selectedTime)} 
           text={timerMin+':'+timerSec}
+          //below code is from  https://www.npmjs.com/package/react-circular-progressbar 
+          styles={buildStyles({
+            // Rotation of path and trail, in number of turns (0-1)
+            rotation: 25,
+        
+            // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+            strokeLinecap: 'round',
+        
+            // Text size
+            textSize: '16px',
+        
+            // How long animation takes to go from one second to another, in seconds
+            pathTransitionDuration: 0.1,
+        
+            // Can specify path transition in more detail, or remove it entirely
+            // pathTransition: 'none',
+        
+            // Colors
+            pathColor: '#F1D0A8',
+            trailColor: '#D2CADD',
+            textColor: '#74634F',
+            backgroundColor: '#F1D0A8',
+          })}
         />
       </div>
       
-
-
       <h1 className="text-XXL">  </h1>
 
       <div className="flex flex-row justify-around">
-        <button className="shadow-lg bg-TimerButton hover:bg-blue-600 rounded-md p-1 pl-3 pr-3"
+        <button className="bg-TimerButton rounded-md p-1 pl-3 pr-3" style={{background: "#F1D0A8", hover: "#E8AF6C"}}
         onClick={() => { 
           setMin(15); 
           updateSelectedTime(15);
         }}> 15 min </button>
 
-        <button className="shadow-lg bg-TimerButton hover:bg-blue-600 rounded-md p-1 pl-3 pr-3"
+        <button className=" bg-TimerButton rounded-md p-1 pl-3 pr-3" style={{background: "#F1D0A8", hover: "#E8AF6C"}}
         onClick={() => { 
           setMin(30); 
           updateSelectedTime(30);
         }}> 30 min </button>
 
-        <button className="shadow-lg bg-TimerButton hover:bg-blue-600 rounded-md p-1 pl-3 pr-3"
+        <button className="bg-TimerButton rounded-md p-1 pl-3 pr-3" style={{background: "#F1D0A8", hover: "#E8AF6C"}}
         onClick={() => { 
           setMin(60);
           updateSelectedTime(60);
         }}> 60 min </button>
 
-        <div className=' shadow-lg bg-TimerButton hover:bg-blue-600 rounded-md p-1 pl-3 pr-3'> 
+        <div className='bg-TimerButton rounded-md p-1 pl-3 pr-3' style={{background: "#F1D0A8", hover: "#E8AF6C"}}> 
           <input 
           type="number" 
           id="min" name="min" 
@@ -95,7 +116,7 @@ function Timer(){
 
       <div className="flex flex-row justify-around w-1/2 ml-auto mr-auto ">
         <button
-            className='shadow-lg bg-green-500 hover:bg-green-600 rounded-md p-1 pl-3 pr-3'
+            className='rounded-md p-1 pl-3 pr-3' style={{background: "#A7BF93"}}
             onClick={() => { 
               setPause(0)
               console.log("Start"+pause);
@@ -103,7 +124,7 @@ function Timer(){
             <PlayIcon/>  
         </button>
         <button
-            className='shadow-lg bg-red-500 hover:bg-red-600 rounded-md p-1 pl-3 pr-3'
+            className='rounded-md p-1 pl-3 pr-3' style={{background: "#C7807B"}}
             onClick={() => { 
               setPause(1)
               console.log("Stop"+pause); 
@@ -111,7 +132,7 @@ function Timer(){
             <StopIcon/>  
         </button>
         <button
-            className='shadow-lg bg-TimerButton hover:bg-blue-600 rounded-md p-1 pl-3 pr-3'
+            className='bg-TimerButton rounded-md p-1 pl-3 pr-3' style={{background: "#F1D0A8", hover: "#E8AF6C"}}
             onClick={() => { 
               setPause(1)
               setMin(0)
@@ -125,8 +146,6 @@ function Timer(){
     </div>
   )
 }
-
-
 
 export default Timer;
 
