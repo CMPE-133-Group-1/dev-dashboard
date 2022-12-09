@@ -14,8 +14,9 @@ function NotesApp() {
 
   // Create an entry, passing in the reference to the collection and also the parameters of the note objects 
   const createNote = async () => {
-    await addDoc(notesCollectionRef, {Title: newTitle, Body: newBody})
-
+    if(newTitle!="" && newBody!=""){
+      await addDoc(notesCollectionRef, {Title: newTitle, Body: newBody})
+    }
   } 
 
   useEffect(()=>{

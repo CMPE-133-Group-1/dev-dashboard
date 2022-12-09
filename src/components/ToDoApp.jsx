@@ -14,7 +14,10 @@ function ToDoApp() {
 
   // Create a to-do object and add it to the firebase DB
   const createTodos = async () => {
-    await addDoc(todosCollectionRef, {Task: newTask})
+    if(newTask!=""){
+      await addDoc(todosCollectionRef, {Task: newTask})
+    }
+    
   } 
 
   // when the page rendes this will be called

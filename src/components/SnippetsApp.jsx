@@ -18,7 +18,9 @@ function SnippetsApp() {
 
   // Create an entry, passing in the reference tot the collection and also the parameters 
   const createSnippet = async () => {
-    await addDoc(notesCollectionRef, {Title: newTitle, Body: newBody})
+    if(newTitle!="" && newBody!=""){
+      await addDoc(notesCollectionRef, {Title: newTitle, Body: newBody})
+    }
   } 
 
   // when the page renders this will be called
