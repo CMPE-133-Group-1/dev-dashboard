@@ -40,11 +40,11 @@ function ToDoApp() {
   }
 
   return (
-    <div className="App bg-slate-600 rounded-lg w-1/1 h-64 p-3 overflow-auto">
+    <div className="App rounded-lg w-1/1 h-64 p-3 overflow-auto" style={{background: "#F8E9D2"}}>
       
       <div className=' rounded-lg flex flex-row justify-between mb-2'> 
         <textarea className='p-1 text-zinc-800 rounded-lg' placeholder='To-do' type='text' minLength={3} onChange={(event) => {setNewTask(event.target.value)}}/> 
-        <button className='bg-green-300 p-1 rounded-lg' name='create todo' onClick={createTodos}> Submit </button> 
+        <button className='p-1 rounded-lg' style={{background: "#F7D7AD", border: '1px solid #74634F'}} name='create todo' onClick={createTodos}> Submit </button> 
       </div>
        
       {todos.map((task) => {

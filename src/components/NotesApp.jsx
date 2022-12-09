@@ -40,12 +40,12 @@ function NotesApp() {
   }
 
   return (
-    <div className="App bg-slate-600 rounded-lg w-1/1 h-64  overflow-auto p-3">
+    <div className="App rounded-lg w-1/1 h-64  overflow-auto p-3" style={{background: "#EBDEAF", border: '1px solid #74634F'}}>
       
         <div className=' flex flex-col  gap-1 rounded-lg p-2 mb-2'> 
           <input className='bg-grey-200 text-zinc-800 p-1 rounded-lg' placeholder='Title...' type='text' minLength={3} onChange={(event) => {setNewTitle(event.target.value)}}/> 
           <textarea className='bg-grey-200 text-zinc-800 p-1 rounded-lg' placeholder='Body...' type='text' minLength={3} onChange={(event)  => {setNewBody(event.target.value)}}/> 
-          <button className='bg-green-300 rounded-lg w-1/2 mr-auto ml-auto' name='create note' onClick={createNote}> submit </button>
+          <button className='rounded-lg w-1/2 mr-auto ml-auto' style={{background: "#A7BF93", border: '1px solid #74634F'}} name='create note' onClick={createNote}> submit </button>
         </div>
         
       {notes.map((note) => {

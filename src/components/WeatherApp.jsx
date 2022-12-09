@@ -78,7 +78,7 @@ function WeatherApp(){
     }
 
     return(
-        <div className='bg-blue-600 p-4 rounded-lg flex flex-col gap-0 '> 
+        <div className='border-2 p-4 rounded-lg flex flex-col gap-0 ' style={{background: "#9EB8C7", border: '1px solid #74634F'}}> 
 
             <Clock/>
 
@@ -88,7 +88,7 @@ function WeatherApp(){
                     <input 
                     type="text" 
                     placeholder='Enter City...' 
-                    className='rounded-lg p-1 text-white bg-blue-500'
+                    className='rounded-lg p-1 text-white' style={{background: "#6C99B2"}} 
                     onChange={inputed => setCity(inputed.target.value)}
                     value={city}
                     onKeyPress={getWeather}
@@ -106,7 +106,7 @@ function WeatherApp(){
                 
                 {typeof weatherData.main === 'undefined' ? (
                     <div>
-                        <p className='text-blue-200 text-[34px]' > 
+                        <p className='text-[34px]' style= {{text: "#FFFFFF"}} > 
                             Where are we today?
                         </p>
                     </div>
