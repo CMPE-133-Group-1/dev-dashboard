@@ -1,6 +1,7 @@
-<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M71.3397 35C75.1887 28.3333 84.8113 28.3333 88.6603 35L123.301 95C127.15 101.667 122.339 110 114.641 110H45.359C37.661 110 32.8497 101.667 36.6987 95L71.3397 35Z" stroke="white" stroke-width="10"/>
-<path d="M75.6699 67.5C77.5944 64.1667 82.4056 64.1667 84.3301 67.5L92.9904 82.5C94.9149 85.8333 92.5093 90 88.6603 90H71.3398C67.4908 90 65.0851 85.8333 67.0096 82.5L75.6699 67.5Z" fill="white" stroke="white" stroke-width="10"/>
-<rect x="5" y="5" width="150" height="150" rx="10" stroke="white" stroke-width="10"/>
-<circle cx="80" cy="80" r="75" stroke="white" stroke-width="10"/>
+<svg width="41" height="43" viewBox="0 0 41 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.7562 37.3983L24.0965 23.4901L33.4368 37.3983H14.7562Z" fill="#E4D5C6" stroke="white"/>
+<rect x="7.69299" y="12.8898" width="32.807" height="17.2203" fill="#E4D5C6" stroke="white"/>
+<path d="M17.4825 8.01695C17.4825 12.1161 13.7363 15.5339 8.99123 15.5339C4.24619 15.5339 0.5 12.1161 0.5 8.01695C0.5 3.91783 4.24619 0.5 8.99123 0.5C13.7363 0.5 17.4825 3.91783 17.4825 8.01695Z" fill="#E4D5C6" stroke="white"/>
+<line x1="40.2807" y1="19.4492" x2="15.8246" y2="19.4492" stroke="white"/>
+<line y1="-0.5" x2="11.6624" y2="-0.5" transform="matrix(-0.146482 0.989213 -0.992208 -0.124596 15.9445 18.8781)" stroke="white"/>
 </svg>
