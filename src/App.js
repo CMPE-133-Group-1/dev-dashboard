@@ -1,5 +1,6 @@
 import WeatherApp from './components/WeatherApp.jsx';
 import SnippetsApp from './components/SnippetsApp';
+import ColorWheel from './components/ColorWheel';
 import Banner  from './components/Banner.jsx';
 import NotesApp from './components/NotesApp';
 import Timer  from './components/Timer.jsx';
@@ -17,6 +18,7 @@ function App() {
         <div className="grid grid-cols-3 gap-2 h-4/5">
           <div className='bg-blue-200 grid grid-row gap-1'>
             <Links/>
+            
           </div>
           <div className='bg-blue-300'> 
            <WeatherApp/>
