@@ -42,12 +42,12 @@ function Banner(){
 
     <div className="w-full flex justify-between h-16 mb-2">
 
-      <div className="border-2 border-white-100 bg-from-[#9DAB86] drop-shadow-lg flex justify-center h-full w-16 rounded-md">
-        <img className="w-9/12 drop-shadow-lg" src={logo} alt='logo'/>
+      <div className="border-2 border-white-100 bg-from-[#333333]  flex justify-center h-full w-16 rounded-md">
+        <img className="w-9/12" src={logo} alt='logo'/>
       </div>
     
-      <div className="w-1/2 border-2 border-from-[#9DAB86] drop-shadow-lg bg-from-[#9DAB86] rounded-md flex justify-center align-text-middle pl-3 pr-3 pt-1 pb-1">
-        <p className="inline-block font-bold drop-shadow-lg pt-3 m-0"> {'"'+ activeQuote.name +'" - ' + activeQuote.author} </p>
+      <div className="w-1/2 border-2  rounded-md flex justify-center align-text-middle pl-3 pr-3 pt-1 pb-1" style={{border: "1px solid #74634F", color: "#333333"}}>
+        <p className="inline-block font-regular  pt-3 m-0"> {'"'+ activeQuote.name +'" - ' + activeQuote.author} </p>
       </div>
 
       <div className="opacity-0 flex justify-center h-full w-16 rounded-md">
