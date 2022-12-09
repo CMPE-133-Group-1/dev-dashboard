@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
-import logo from '../images/logo.svg';
+import logo from '../images/newLogo.svg';
 import Timer from './Timer';
 
 
@@ -42,7 +42,7 @@ function Banner(){
 
     <div className="w-full flex justify-between h-16 mb-2">
 
-      <div className="border-2 border-white-100 bg-from-[#333333]  flex justify-center h-full w-16 rounded-md">
+      <div className="border-2 flex justify-center h-full w-16 rounded-md" style={{border: "#F5F5F5", fill: "#F5F5F5SS"}}>
         <img className="w-9/12" src={logo} alt='logo'/>
       </div>
     
