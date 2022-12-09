@@ -57,6 +57,12 @@ Run the command of `mobiscroll config react`
 
 *note: you may be asked to You will be prompted to log in with your mobiscroll account. (its free)*
 
+## Error: Referring to React-circular-progressbar
+
+Run the command of `npm install react-circular-progressbar`
+
+This will install the react-circular-progressbar dependancies required for the project to run.
+
 ## Error: Referring to Radix-Icons
 
 Run the command of `npm install @radix-ui/react-icons`
