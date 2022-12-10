@@ -117,11 +117,11 @@ function WeatherApp(){
                                 <img className='rounded-lg mt-5 mb-5 mr-0 pl-0 ml-0' src={iconLink} alt="img" />
                             </div>
                             <div>
-                                <h1 className='text-blue-200 text-[65px] ml-auto p-0'> {weatherData.name} </h1>
+                                <h1 className='text-[65px] ml-auto p-0'style={{text: "#FFFFFF"}}> {weatherData.name} </h1>
 
                                 <div className='flex flex-col gap-0 text-left p-0'>
-                                    <h2 className='text-blue-200 text-[18px] font-semibold'> {Math.round(weatherData.main.temp)} °F </h2>
-                                    <h2 className='text-blue-200 text-[14px] font-semibold'> {weatherData.weather[0].main} </h2>
+                                    <h2 className='text-[18px] font-semibold' style={{text: "#FFFFFF"}}> {Math.round(weatherData.main.temp)} °F </h2>
+                                    <h2 className='text-[14px] font-semibold' style={{text: "#FFFFFF"}}> {weatherData.weather[0].main} </h2>
                                 </div>
                             </div>
                         </div>
@@ -129,11 +129,11 @@ function WeatherApp(){
                         <div className='flex flex-col-5 gap-1 justify-around'> 
                         {forecastData.map((forecast) => {
                             return (
-                                <div className=' mb-1 p-1 rounded-lg bg-blue-500 text-center w-24'> 
+                                <div className=' mb-1 p-1 rounded-lg text-center w-24' style={{background: "#84A5B8"}}> 
                                     <img className='rounded-lg m-0 p-0' src={"http://openweathermap.org/img/wn/" + forecast.weather[0].icon + "@2x.png"} alt="img" /> 
                                     <div> 
                                         <h1 className='border-solid '> {forecast.dt_txt.slice(5,10)} </h1> 
-                                        <p className='font-light border-2 border-sky-500 rounded-lg '> {forecast.weather[0].main} </p> 
+                                        <p className='font-light rounded-lg '> {forecast.weather[0].main} </p> 
                                     </div> 
                                 </div>
                             )
