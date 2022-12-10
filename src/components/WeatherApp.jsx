@@ -3,7 +3,7 @@ import { Crosshair2Icon } from '@radix-ui/react-icons'
 import Clock from './Clock'
 
 function WeatherApp(){
-    const WeatherAPI = 'ba8291294488364e8754a031b9e8b25f'
+    
     // used to store and set the weather data
     const [weatherData, setWeatherData] = useState([{}])
     // used to store what we input
