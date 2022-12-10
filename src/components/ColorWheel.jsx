@@ -77,8 +77,8 @@ function ColorWheel() {
                     }} style={{background: "#A7BF93", border: '1px solid #74634F'}}>Add Color To Palette</button>
                 </div>
 
-                <div className=' rounded-lg flex flex-row justify-between mb-2'> 
-                    {/* <textarea className='p-1 text-zinc-800 rounded-lg' onChange={(event) => {setNewTask(event.target.value)}}/>  */}
+                {/* <div className=' rounded-lg flex flex-row justify-between mb-2'> 
+                    <textarea className='p-1 text-zinc-800 rounded-lg' onChange={(event) => {setNewTask(event.target.value)}}/> 
                     <button className='p-1 rounded-lg' name='create todo' onClick={createPalettes} style={{background: "#F8E9D2", border: '1px solid #74634F'}}> Submit Palette</button> 
                 </div>
                 
@@ -89,7 +89,7 @@ function ColorWheel() {
                     <button className='p-1 rounded-lg' task='delete' onClick={() => {deletePalettes(task.id)}} style={{background: "#FFFFFF", border: '1px solid #74634F'}}> done </button>
                     </div>
                     )
-                })}
+                })} */}
             </div>
         </div>
     );
