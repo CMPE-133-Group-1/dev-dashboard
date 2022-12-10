@@ -52,7 +52,7 @@ function SnippetsApp() {
   }
 
   return (
-    <div className="App rounded-lg w-1/1 h-2/4 flex flex-cols-2 gap-1 overflow-auto p-3 mt-10" style={{background: "#A7B29E", border: '1px solid #74634F'}}>
+    <div className="App rounded-lg w-1/1 h-2/4 flex flex-cols-2 gap-1 overflow-auto p-3 mt-5" style={{background: "#A7B29E", border: '1px solid #74634F'}}>
 
         <div className='overflow-scroll'style={{background: "#C1C8BA"}}> 
           <div className=' flex flex-col w-1/1 gap-1 rounded-lg p-2 mb-2'style={{background: "#C1C8BA"}}> 
