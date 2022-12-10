@@ -67,26 +67,26 @@ function ColorWheel() {
                 />
 
                 <div 
-                className="buttons bg-blue-200"
+                className="buttons" style={{background: "#FFFFFF"}}
                 width="20rem" > 
                     <button 
                     ref={buttonRef}
-                    className='bg-green-400 p-2 rounded-xl'
+                    className='p-2 rounded-xl'
                     onClick={() => {
                         handleClick()
-                    }}>Add Color To Palette</button>
+                    }} style={{background: "#A7BF93", border: '1px solid #74634F'}}>Add Color To Palette</button>
                 </div>
 
                 <div className=' rounded-lg flex flex-row justify-between mb-2'> 
                     {/* <textarea className='p-1 text-zinc-800 rounded-lg' onChange={(event) => {setNewTask(event.target.value)}}/>  */}
-                    <button className='bg-green-300 p-1 rounded-lg' name='create todo' onClick={createPalettes}> Submit Palette</button> 
+                    <button className='p-1 rounded-lg' name='create todo' onClick={createPalettes} style={{background: "#F8E9D2", border: '1px solid #74634F'}}> Submit Palette</button> 
                 </div>
                 
                 {newPalette.map((task) => {
                     return (
                     <div className='flex flex-row gap-1 justify-between mb-1'> 
-                    <h1 className='p-1 bg-slate-500 w-3/4 rounded-lg text-left'> {task.paletteArray} </h1> 
-                    <button className='bg-red-300 p-1 rounded-lg' task='delete' onClick={() => {deletePalettes(task.id)}}> done </button>
+                    <h1 className='p-1 w-3/4 rounded-lg text-left' style={{background: "#FFFFFF"}}> {task.paletteArray} </h1> 
+                    <button className='p-1 rounded-lg' task='delete' onClick={() => {deletePalettes(task.id)}} style={{background: "#FFFFFF", border: '1px solid #74634F'}}> done </button>
                     </div>
                     )
                 })}
