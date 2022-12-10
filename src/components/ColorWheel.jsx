@@ -56,12 +56,12 @@ function ColorWheel() {
         <div className="App" style={{ display: "flex", justifyContent: "space-around" }}>
             <div className="sketchpicker text-slate-800">
                 <SketchPicker
-                className='max-w-xs'
+                className='max-w-md'
                     color={color}
                     onChange={ color => {
                         setColor(color.hex)
                     }}
-                    width="20rem"
+                    width="100%"
                     disableAlpha={true}
                     presetColors={preset}
                 />

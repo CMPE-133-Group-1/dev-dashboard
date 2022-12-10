@@ -43,7 +43,9 @@ function Banner(){
       </div>
     
       <div className="w-1/2 border-2  rounded-md flex justify-center align-text-middle pl-3 pr-3 pt-1 pb-1" style={{border: "1px solid #74634F", color: "#333333"}}>
-        <p className="inline-block font-regular  pt-3 m-0"> {'"'+ activeQuote.name +'" - ' + activeQuote.author} </p>
+        <p className="inline-block font-regular  pt-3 m-0"> 
+          <span style={{ fontWeight : 'bold'}}>{'"'+ activeQuote.name +'" - ' + activeQuote.author}</span> 
+        </p>
       </div>
 
       <div className="opacity-0 flex justify-center h-full w-16 rounded-md">
