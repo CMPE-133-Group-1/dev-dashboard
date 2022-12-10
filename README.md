@@ -69,6 +69,12 @@ Run the command of `npm install @radix-ui/react-icons`
 
 This will install the Radix icon dependancies required for the project to run.
 
+## Error: Referring to React-color
+
+Run the command of `npm i react-color`
+
+This will install the react-color dependancies required for the project to run.
+
 
 ###  -------------------------------------------------------------------------------------------------------|
 ###  STOP HERE : Below refers to more technical operations that may not be needed for demo-ing this project |
