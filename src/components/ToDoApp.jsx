@@ -6,18 +6,14 @@ import { CheckIcon } from '@radix-ui/react-icons';
 
 
 function ToDoApp() {
-  // task property and list of to-dos
   const [newTask, setNewTask] = useState("")
   const [todos, setTodos] = useState([])
-  // referes tot eh collection that stores our task objects
+  // refers to the collections in the db called todos
   const todosCollectionRef = collection(db, "todos")
 
-  // Create a to-do object and add it to the firebase DB
+  // Create todo and store on db
   const createTodos = async () => {
-    if(newTask!=""){
-      await addDoc(todosCollectionRef, {Task: newTask})
-    }
-    
+    await addDoc(todosCollectionRef, {Task: newTask})
   } 
 
   // when the page rendes this will be called
@@ -33,7 +29,17 @@ function ToDoApp() {
   },[todos])
   // above [means that if a change is detected in tasks it will re-render!!]
 
-  // delete to-do object from firebase DB and wait for confirmation (await)
+  // update todos from the db
+  // const updateTodos = async (id, task) => {
+  //   // const taskDoc = doc(db, "tasks", id)
+  //   // const newTask = {task: task }
+  //   // const newBody = {body: body }
+  //   // await updateDoc(taskDoc,newTask)
+  //   // await updateDoc(taskDoc,newBody)
+  //   console.log(id +" : "+ task)
+  // }
+
+  // delete to dos from the db
   const deleteTodos = async (id) => {
     const noteDoc = doc(db, "todos", id)
     await deleteDoc(noteDoc)
@@ -41,17 +47,16 @@ function ToDoApp() {
 
   return (
     <div className="App rounded-lg w-1/1 h-64 p-3 overflow-auto" style={{background: "#F8E9D2"}}>
-      
       <div className=' rounded-lg flex flex-row justify-between mb-2'> 
         <textarea className='p-1 text-zinc-800 rounded-lg' placeholder='To-do' type='text' minLength={3} onChange={(event) => {setNewTask(event.target.value)}}/> 
-        <button className='p-1 rounded-lg' style={{background: "#F7D7AD", border: '1px solid #74634F'}} name='create todo' onClick={createTodos}> Submit </button> 
+        <button className='p-1 rounded-lg' name='create todo' onClick={createTodos} style={{background: "#F7D7AD", border: '1px solid #74634F'}}> Submit </button> 
       </div>
        
       {todos.map((task) => {
         return (
         <div className='flex flex-row gap-1 justify-between mb-1'> 
-          <h1 className='p-1 bg-slate-500 w-3/4 rounded-lg text-left'> {task.Task} </h1> 
-          <button className='bg-red-300 p-1 rounded-lg' task='delete' onClick={() => {deleteTodos(task.id)}}> 
+          <h1 className='p-1 w-3/4 rounded-lg text-left' style={{background: "#F3D8B0"}}> {task.Task} </h1> 
+          <button className='p-1 rounded-lg' task='delete' onClick={() => {deleteTodos(task.id)}} style={{background: "#C7807B"}}> 
             <CheckIcon/>
           </button>
         </div>
@@ -64,3 +69,5 @@ function ToDoApp() {
 
 
 export default ToDoApp
+
+//<button task='edit' onClick={() => {updateTodos(task.id, task.Task, task.Body)}}/>
